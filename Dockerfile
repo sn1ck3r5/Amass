@@ -5,7 +5,7 @@ ENV GO111MODULE on
 WORKDIR /go/src/github.com/OWASP/Amass
 RUN go install ./...
 
-FROM alpine:latest
+FROM alpine:3.18.3
 RUN apk --no-cache add ca-certificates
 COPY --from=build /go/bin/amass /bin/amass
 COPY --from=build /go/src/github.com/OWASP/Amass/examples/wordlists/ /wordlists/
